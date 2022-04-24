@@ -50,7 +50,7 @@ export default {
       this.calendarOptions.weekends = !this.calendarOptions.weekends // update a property
     },
 
-    handleDateSelect(selectInfo) {
+    handleDateSelect(selectInfo) {    //界面添加事件，不需要
       let title = prompt('Please enter a new title for your event')
       let calendarApi = selectInfo.view.calendar
 
@@ -105,8 +105,9 @@ export default {
         <h2>All Events ({{ currentEvents.length }})</h2>
         <ul>
           <li v-for='event in currentEvents' :key='event.id'>
-            <b>{{ event.startStr }}</b>
-            <i>{{ event.title }}</i>
+            <b>Start Time:{{ event.startStr }}</b><br>
+            <i>{{ event.title }}</i><br>
+            <b>End Time:{{ event.endStr }}</b>
           </li>
         </ul>
       </div>
@@ -118,7 +119,7 @@ export default {
       >
         <template v-slot:eventContent='arg'>
           <b>{{ arg.timeText }}</b>
-          <i>{{ arg.event.title }}</i>
+          <i>{{ arg.event.title }}</i><br>
         </template>
       </FullCalendar>
     </div>
